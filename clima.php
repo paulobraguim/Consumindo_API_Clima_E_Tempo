@@ -12,7 +12,11 @@ $api = new Api("5c113205eab4b011183a1695e7893864");
 $cidade = filter_input(INPUT_POST, "inputCidade", FILTER_SANITIZE_STRING);
 $uf = filter_input(INPUT_POST, "selectUf", FILTER_SANITIZE_STRING);
 
-$dados = $api->consultarClima($cidade, $uf);
+if(strlen($cidade) < 1){
+    echo "Dados Incorretos"; exit;
+}else {
+    $dados = $api->consultarClima($cidade, $uf);
+}
 
 ?>
 
