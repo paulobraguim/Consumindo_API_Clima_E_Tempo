@@ -16,6 +16,10 @@ if(strlen($cidade) < 1){
     echo "Dados Incorretos"; exit;
 }else {
     $dados = $api->consultarClima($cidade, $uf);
+    
+    if($dados['cod'] == "404"){
+        echo "Cidade não encontrada. Por favor, cheque o nome da cidade e tente novamente!"; exit;
+    }
 }
 
 ?>
@@ -51,7 +55,7 @@ if(strlen($cidade) < 1){
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <p><?php echo "Cidade: $cidade/$uf" ?></p><hr>
+                <p><?php echo "Cidade: " . $dados['name'] ?></p><hr>
             </div>
         </div>
 
