@@ -13,7 +13,7 @@ $cidade = filter_input(INPUT_POST, "inputCidade", FILTER_SANITIZE_STRING);
 $uf = filter_input(INPUT_POST, "selectUf", FILTER_SANITIZE_STRING);
 
 if(strlen($cidade) < 1){
-    echo "Dados Incorretos"; exit;
+    header("location: /public/views/erro.html"); exit;
 }else {
     $dados = $api->consultarClima($cidade, $uf);
     
